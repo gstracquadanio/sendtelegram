@@ -1,7 +1,6 @@
 # sendtelegram
-![](https://img.shields.io/github/v/release/gstracquadanio/timone)
+![](https://img.shields.io/github/v/release/gstracquadanio/sendtelegram)
 ![](https://github.com/gstracquadanio/sendtelegram/workflows/main/badge.svg)
-![](https://github.com/gstracquadanio/sendtelegram/workflows/release/badge.svg)
 
 A Telegram replacement for sendmail.
 
@@ -31,7 +30,7 @@ Sending a text file as a telegram message:
 cat README.md | sendtelegram
 ```
 ## Changelong
-* 0.0.1: Rewriting `sendtelegram` in GO. 
+* 0.1.1: Rewriting `sendtelegram` in GO. 
 
 ## Author
 

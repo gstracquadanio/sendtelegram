@@ -1,6 +1,6 @@
 # sendtelegram
 ![](https://img.shields.io/github/v/release/gstracquadanio/timone)
-![](https://github.com/gstracquadanio/sendtelegram/workflows/build/badge.svg)
+![](https://github.com/gstracquadanio/sendtelegram/workflows/main/badge.svg)
 ![](https://github.com/gstracquadanio/sendtelegram/workflows/release/badge.svg)
 
 A Telegram replacement for sendmail.

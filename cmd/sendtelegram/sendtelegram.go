@@ -11,10 +11,16 @@ import (
 	"os"
 )
 
+// env variable holding the API token
+const envAPIToken = "SENDTELEGRAM_API_TOKEN"
+
+// env variable holding the chat ID token
+const envChatID = "SENDTELEGRAM_CHAT_ID"
+
 // hard coded endpoint url
 const endpoint = "https://api.telegram.org/bot%s/sendMessage"
 
-// send message to the telegram chat id
+// send message to a Telegram chatID using the input API token.
 func sendMessage(apiToken string, chatID string) {
 	// set chat endpoint
 	chatEndpoint := fmt.Sprintf(endpoint, apiToken)
@@ -40,8 +46,8 @@ func sendMessage(apiToken string, chatID string) {
 }
 
 func main() {
-	apiToken := flag.String("api-token", os.Getenv("SENDTELEGRAM_API_TOKEN"), "Telegram API token.")
-	chatID := flag.String("chat-id", os.Getenv("SENDTELEGRAM_CHAT_ID"), "Telegram chat ID.")
+	apiToken := flag.String("api-token", os.Getenv(envAPIToken), "Telegram API token.")
+	chatID := flag.String("chat-id", os.Getenv(envChatID), "Telegram chat ID.")
 	flag.Parse()
 
 	// checking if the token and chat id are present

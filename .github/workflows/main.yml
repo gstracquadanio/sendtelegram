@@ -11,9 +11,6 @@ jobs:
   test:
     name: "Testing"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        OS: [3.6, 3.7, 3.8]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,5 +18,4 @@ jobs:
         uses: actions/setup-go@v2-beta
       - name: Build
         run: go build cmd/sendtelegram/sendtelegram.go
-      - name: Test
-        run: ./sendtelegram -h
+

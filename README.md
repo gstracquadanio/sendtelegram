@@ -30,6 +30,7 @@ Sending a text file as a telegram message:
 cat README.md | sendtelegram
 ```
 ## Changelong
+* 0.1.2: Build `sendtelegram` with options to reduce filesize. 
 * 0.1.1: Rewriting `sendtelegram` in GO. 
 
 ## Author

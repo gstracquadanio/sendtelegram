@@ -20,6 +20,6 @@ jobs:
       - name: Setup GO
         uses: actions/setup-go@v2-beta
       - name: Build
-        run: go build cmd/sendtelegram.go
+        run: go build cmd/sendtelegram/sendtelegram.go
       - name: Test
-        run: ./cmd/sendtelegram -h
+        run: ./sendtelegram -h

@@ -60,7 +60,7 @@ jobs:
       - name: Setup GO
         uses: actions/setup-go@v2-beta
       - name: Build sendtelegram
-        run: GOOS=${{matrix.os}} GOARCH=${{matrix.arch}} go build -o sendtelegram-${{matrix.arch}}-${{matrix.os}} cmd/sendtelegram/sendtelegram.go
+        run: GOOS=${{matrix.os}} GOARCH=${{matrix.arch}} go build -ldflags="-s -w" -o sendtelegram-${{matrix.arch}}-${{matrix.os}} cmd/sendtelegram/sendtelegram.go
       - name: "Adding build to release"
         uses: actions/upload-release-asset@v1.0.1
         env:

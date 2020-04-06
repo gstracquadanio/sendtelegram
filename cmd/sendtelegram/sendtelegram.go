@@ -20,6 +20,9 @@ const envChatID = "SENDTELEGRAM_CHAT_ID"
 // hard coded endpoint url
 const endpoint = "https://api.telegram.org/bot%s/sendMessage"
 
+// message length
+const messageLen = 4096
+
 // send message to a Telegram chatID using the input API token.
 func sendMessage(apiToken string, chatID string) {
 	// set chat endpoint
@@ -27,17 +30,17 @@ func sendMessage(apiToken string, chatID string) {
 	// reading from stdin for easy pipeing
 	reader := bufio.NewReader(os.Stdin)
 	// buffering reads. currently telegram max message length is 4096 bytes
-	buffer := make([]byte, 4096)
+	buffer := make([]byte, messageLen)
 
 	for {
 		// read input
-		_, err := reader.Read(buffer)
+		n, err := io.ReadFull(reader, buffer)
 		// stop if finished reading or errors occur.
 		if err != nil && err == io.EOF {
 			break
 		}
 		// build HTTP request.
-		resp, err := http.PostForm(chatEndpoint, url.Values{"chat_id": {chatID}, "text": {string(buffer)}})
+		resp, err := http.PostForm(chatEndpoint, url.Values{"chat_id": {chatID}, "text": {string(buffer[:n])}})
 		// if response is not HTTP.OK, log error and exit.
 		if resp.StatusCode != 200 {
 			log.Fatal(fmt.Sprintf("Error while sending message. HTTP response: %d (error: %v)", resp.StatusCode, err))
